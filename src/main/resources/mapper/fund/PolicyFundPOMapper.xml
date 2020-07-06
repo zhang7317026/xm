@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrz.mapper.fund.PolicyFundPOMapper" >
+  <resultMap id="BaseResultMap" type="com.zrz.entity.fund.PolicyFundPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="policy_id" property="policyId" jdbcType="VARCHAR" />
+    <result column="fund_code" property="fundCode" jdbcType="VARCHAR" />
+    <result column="fund_name" property="fundName" jdbcType="VARCHAR" />
+    <result column="sum_account" property="sumAccount" jdbcType="DOUBLE" />
+    <result column="now_money" property="nowMoney" jdbcType="DOUBLE" />
+    <result column="input_money" property="inputMoney" jdbcType="DOUBLE" />
+    <result column="float_money" property="floatMoney" jdbcType="DOUBLE" />
+    <result column="float_rate" property="floatRate" jdbcType="DOUBLE" />
+    <result column="close0" property="close0" jdbcType="DOUBLE" />
+    <result column="close_max" property="closeMax" jdbcType="DOUBLE" />
+    <result column="back_rate" property="backRate" jdbcType="DOUBLE" />
+    <result column="deviate_standard" property="deviateStandard" jdbcType="DOUBLE" />
+    <result column="deviate_rate" property="deviateRate" jdbcType="DOUBLE" />
+    <result column="day0" property="day0" jdbcType="DOUBLE" />
+    <result column="day1" property="day1" jdbcType="DOUBLE" />
+    <result column="day2" property="day2" jdbcType="DOUBLE" />
+    <result column="day3" property="day3" jdbcType="DOUBLE" />
+    <result column="day4" property="day4" jdbcType="DOUBLE" />
+    <result column="day5" property="day5" jdbcType="DOUBLE" />
+    <result column="day6" property="day6" jdbcType="DOUBLE" />
+    <result column="day7" property="day7" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, policy_id, fund_code, fund_name, sum_account, now_money, input_money, float_money, 
+    float_rate, close0, close_max, back_rate, deviate_standard, deviate_rate, day0, day1, 
+    day2, day3, day4, day5, day6, day7, create_time, update_date, update_time, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from policy_fund
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from policy_fund
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zrz.entity.fund.PolicyFundPO" >
+    insert into policy_fund (id, policy_id, fund_code, 
+      fund_name, sum_account, now_money, 
+      input_money, float_money, float_rate, 
+      close0, close_max, back_rate, 
+      deviate_standard, deviate_rate, day0, 
+      day1, day2, day3, day4, 
+      day5, day6, day7, create_time, 
+      update_date, update_time, status
+      )
+    values (#{id,jdbcType=VARCHAR}, #{policyId,jdbcType=VARCHAR}, #{fundCode,jdbcType=VARCHAR}, 
+      #{fundName,jdbcType=VARCHAR}, #{sumAccount,jdbcType=DOUBLE}, #{nowMoney,jdbcType=DOUBLE}, 
+      #{inputMoney,jdbcType=DOUBLE}, #{floatMoney,jdbcType=DOUBLE}, #{floatRate,jdbcType=DOUBLE}, 
+      #{close0,jdbcType=DOUBLE}, #{closeMax,jdbcType=DOUBLE}, #{backRate,jdbcType=DOUBLE}, 
+      #{deviateStandard,jdbcType=DOUBLE}, #{deviateRate,jdbcType=DOUBLE}, #{day0,jdbcType=DOUBLE}, 
+      #{day1,jdbcType=DOUBLE}, #{day2,jdbcType=DOUBLE}, #{day3,jdbcType=DOUBLE}, #{day4,jdbcType=DOUBLE}, 
+      #{day5,jdbcType=DOUBLE}, #{day6,jdbcType=DOUBLE}, #{day7,jdbcType=DOUBLE}, #{createTime,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrz.entity.fund.PolicyFundPO" >
+    insert into policy_fund
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="policyId != null" >
+        policy_id,
+      </if>
+      <if test="fundCode != null" >
+        fund_code,
+      </if>
+      <if test="fundName != null" >
+        fund_name,
+      </if>
+      <if test="sumAccount != null" >
+        sum_account,
+      </if>
+      <if test="nowMoney != null" >
+        now_money,
+      </if>
+      <if test="inputMoney != null" >
+        input_money,
+      </if>
+      <if test="floatMoney != null" >
+        float_money,
+      </if>
+      <if test="floatRate != null" >
+        float_rate,
+      </if>
+      <if test="close0 != null" >
+        close0,
+      </if>
+      <if test="closeMax != null" >
+        close_max,
+      </if>
+      <if test="backRate != null" >
+        back_rate,
+      </if>
+      <if test="deviateStandard != null" >
+        deviate_standard,
+      </if>
+      <if test="deviateRate != null" >
+        deviate_rate,
+      </if>
+      <if test="day0 != null" >
+        day0,
+      </if>
+      <if test="day1 != null" >
+        day1,
+      </if>
+      <if test="day2 != null" >
+        day2,
+      </if>
+      <if test="day3 != null" >
+        day3,
+      </if>
+      <if test="day4 != null" >
+        day4,
+      </if>
+      <if test="day5 != null" >
+        day5,
+      </if>
+      <if test="day6 != null" >
+        day6,
+      </if>
+      <if test="day7 != null" >
+        day7,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="policyId != null" >
+        #{policyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fundCode != null" >
+        #{fundCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fundName != null" >
+        #{fundName,jdbcType=VARCHAR},
+      </if>
+      <if test="sumAccount != null" >
+        #{sumAccount,jdbcType=DOUBLE},
+      </if>
+      <if test="nowMoney != null" >
+        #{nowMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="inputMoney != null" >
+        #{inputMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="floatMoney != null" >
+        #{floatMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="floatRate != null" >
+        #{floatRate,jdbcType=DOUBLE},
+      </if>
+      <if test="close0 != null" >
+        #{close0,jdbcType=DOUBLE},
+      </if>
+      <if test="closeMax != null" >
+        #{closeMax,jdbcType=DOUBLE},
+      </if>
+      <if test="backRate != null" >
+        #{backRate,jdbcType=DOUBLE},
+      </if>
+      <if test="deviateStandard != null" >
+        #{deviateStandard,jdbcType=DOUBLE},
+      </if>
+      <if test="deviateRate != null" >
+        #{deviateRate,jdbcType=DOUBLE},
+      </if>
+      <if test="day0 != null" >
+        #{day0,jdbcType=DOUBLE},
+      </if>
+      <if test="day1 != null" >
+        #{day1,jdbcType=DOUBLE},
+      </if>
+      <if test="day2 != null" >
+        #{day2,jdbcType=DOUBLE},
+      </if>
+      <if test="day3 != null" >
+        #{day3,jdbcType=DOUBLE},
+      </if>
+      <if test="day4 != null" >
+        #{day4,jdbcType=DOUBLE},
+      </if>
+      <if test="day5 != null" >
+        #{day5,jdbcType=DOUBLE},
+      </if>
+      <if test="day6 != null" >
+        #{day6,jdbcType=DOUBLE},
+      </if>
+      <if test="day7 != null" >
+        #{day7,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrz.entity.fund.PolicyFundPO" >
+    update policy_fund
+    <set >
+      <if test="policyId != null" >
+        policy_id = #{policyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fundCode != null" >
+        fund_code = #{fundCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fundName != null" >
+        fund_name = #{fundName,jdbcType=VARCHAR},
+      </if>
+      <if test="sumAccount != null" >
+        sum_account = #{sumAccount,jdbcType=DOUBLE},
+      </if>
+      <if test="nowMoney != null" >
+        now_money = #{nowMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="inputMoney != null" >
+        input_money = #{inputMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="floatMoney != null" >
+        float_money = #{floatMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="floatRate != null" >
+        float_rate = #{floatRate,jdbcType=DOUBLE},
+      </if>
+      <if test="close0 != null" >
+        close0 = #{close0,jdbcType=DOUBLE},
+      </if>
+      <if test="closeMax != null" >
+        close_max = #{closeMax,jdbcType=DOUBLE},
+      </if>
+      <if test="backRate != null" >
+        back_rate = #{backRate,jdbcType=DOUBLE},
+      </if>
+      <if test="deviateStandard != null" >
+        deviate_standard = #{deviateStandard,jdbcType=DOUBLE},
+      </if>
+      <if test="deviateRate != null" >
+        deviate_rate = #{deviateRate,jdbcType=DOUBLE},
+      </if>
+      <if test="day0 != null" >
+        day0 = #{day0,jdbcType=DOUBLE},
+      </if>
+      <if test="day1 != null" >
+        day1 = #{day1,jdbcType=DOUBLE},
+      </if>
+      <if test="day2 != null" >
+        day2 = #{day2,jdbcType=DOUBLE},
+      </if>
+      <if test="day3 != null" >
+        day3 = #{day3,jdbcType=DOUBLE},
+      </if>
+      <if test="day4 != null" >
+        day4 = #{day4,jdbcType=DOUBLE},
+      </if>
+      <if test="day5 != null" >
+        day5 = #{day5,jdbcType=DOUBLE},
+      </if>
+      <if test="day6 != null" >
+        day6 = #{day6,jdbcType=DOUBLE},
+      </if>
+      <if test="day7 != null" >
+        day7 = #{day7,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrz.entity.fund.PolicyFundPO" >
+    update policy_fund
+    set policy_id = #{policyId,jdbcType=VARCHAR},
+      fund_code = #{fundCode,jdbcType=VARCHAR},
+      fund_name = #{fundName,jdbcType=VARCHAR},
+      sum_account = #{sumAccount,jdbcType=DOUBLE},
+      now_money = #{nowMoney,jdbcType=DOUBLE},
+      input_money = #{inputMoney,jdbcType=DOUBLE},
+      float_money = #{floatMoney,jdbcType=DOUBLE},
+      float_rate = #{floatRate,jdbcType=DOUBLE},
+      close0 = #{close0,jdbcType=DOUBLE},
+      close_max = #{closeMax,jdbcType=DOUBLE},
+      back_rate = #{backRate,jdbcType=DOUBLE},
+      deviate_standard = #{deviateStandard,jdbcType=DOUBLE},
+      deviate_rate = #{deviateRate,jdbcType=DOUBLE},
+      day0 = #{day0,jdbcType=DOUBLE},
+      day1 = #{day1,jdbcType=DOUBLE},
+      day2 = #{day2,jdbcType=DOUBLE},
+      day3 = #{day3,jdbcType=DOUBLE},
+      day4 = #{day4,jdbcType=DOUBLE},
+      day5 = #{day5,jdbcType=DOUBLE},
+      day6 = #{day6,jdbcType=DOUBLE},
+      day7 = #{day7,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getListByPolicyId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from policy_fund where policy_id=#{policy_id,jdbcType=VARCHAR} order by fund_code
+  </select>
+  
+  <select id="getListByFundCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from policy_fund where fund_code=#{fund_code,jdbcType=VARCHAR} order by fund_code
+  </select>
+  
+  <select id="getPOByPolicyIdAndFundCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from policy_fund 
+  	where policy_id=#{policy_id,jdbcType=VARCHAR} and fund_code=#{fund_code,jdbcType=VARCHAR}
+  	limit 1
+  </select>
+  
+</mapper>

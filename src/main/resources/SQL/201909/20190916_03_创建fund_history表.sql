@@ -1,0 +1,20 @@
+CREATE TABLE `fund_history` (
+  `fund_code` varchar(200) NOT NULL COMMENT '基金代码',
+  `date0` varchar(200) NOT NULL COMMENT '日期',
+  `now_close` double DEFAULT '0' COMMENT '及时点数',
+  `close0` double DEFAULT '0' COMMENT '收盘点数',
+  `now_float` double DEFAULT '0' COMMENT '及时浮动百分之',
+  `float0` double DEFAULT '0' COMMENT '浮动百分之',
+  `create_time` varchar(200) DEFAULT NULL COMMENT '添加时间',
+  `avg5` double DEFAULT NULL COMMENT '过去交易日平均值5日线',
+  `avg10` double DEFAULT NULL COMMENT '过去交易日平均值10日线',
+  `avg20` double DEFAULT NULL COMMENT '过去交易日平均值10日线',
+  `avg60` double DEFAULT NULL COMMENT '过去交易日平均值60日线',
+  `avg120` double DEFAULT NULL COMMENT '过去交易日平均值120日线',
+  `avg250` double DEFAULT NULL COMMENT '过去交易日平均值250日线',
+  PRIMARY KEY (`fund_code`,`date0`),
+  KEY `close0` (`close0`),
+  KEY `date0` (`date0`) USING BTREE,
+  KEY `fundCode_date0` (`fund_code`,`date0`) USING BTREE,
+  KEY `fundCode_close0` (`fund_code`,`close0`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='基金历史表';

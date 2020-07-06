@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+.displayNone{
+	display: none!important;
+}
+.allScreen{
+	margin: 5px;
+	padding: 5px;
+	width: 100%;
+	height: 100%;
+}

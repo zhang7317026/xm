@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrz.mapper.fund.FundListPOMapper" >
+  <resultMap id="BaseResultMap" type="com.zrz.entity.fund.FundListPO" >
+    <id column="fund_code" property="fundCode" jdbcType="VARCHAR" />
+    <result column="fund_name" property="fundName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="scale" property="scale" jdbcType="DOUBLE" />
+    <result column="error_ranger" property="errorRanger" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fund_code, fund_name, create_time, scale, error_ranger
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from fund_list
+    where fund_code = #{fundCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from fund_list
+    where fund_code = #{fundCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zrz.entity.fund.FundListPO" >
+    insert into fund_list (fund_code, fund_name, create_time, 
+      scale, error_ranger)
+    values (#{fundCode,jdbcType=VARCHAR}, #{fundName,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{scale,jdbcType=DOUBLE}, #{errorRanger,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrz.entity.fund.FundListPO" >
+    insert into fund_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fundCode != null" >
+        fund_code,
+      </if>
+      <if test="fundName != null" >
+        fund_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="scale != null" >
+        scale,
+      </if>
+      <if test="errorRanger != null" >
+        error_ranger,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fundCode != null" >
+        #{fundCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fundName != null" >
+        #{fundName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null" >
+        #{scale,jdbcType=DOUBLE},
+      </if>
+      <if test="errorRanger != null" >
+        #{errorRanger,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrz.entity.fund.FundListPO" >
+    update fund_list
+    <set >
+      <if test="fundName != null" >
+        fund_name = #{fundName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null" >
+        scale = #{scale,jdbcType=DOUBLE},
+      </if>
+      <if test="errorRanger != null" >
+        error_ranger = #{errorRanger,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where fund_code = #{fundCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrz.entity.fund.FundListPO" >
+    update fund_list
+    set fund_name = #{fundName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      scale = #{scale,jdbcType=DOUBLE},
+      error_ranger = #{errorRanger,jdbcType=DOUBLE}
+    where fund_code = #{fundCode,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  
+  <select id="getAllList" resultMap="BaseResultMap">
+  	select * from fund_list
+  </select>
+  
+</mapper>

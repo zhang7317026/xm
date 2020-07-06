@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrz.mapper.fund.IndexListPOMapper" >
+  <resultMap id="BaseResultMap" type="com.zrz.entity.fund.IndexListPO" >
+    <id column="index_code" property="indexCode" jdbcType="VARCHAR" />
+    <result column="index_name" property="indexName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    index_code, index_name, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from index_list
+    where index_code = #{indexCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from index_list
+    where index_code = #{indexCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zrz.entity.fund.IndexListPO" >
+    insert into index_list (index_code, index_name, create_time
+      )
+    values (#{indexCode,jdbcType=VARCHAR}, #{indexName,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrz.entity.fund.IndexListPO" >
+    insert into index_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="indexCode != null" >
+        index_code,
+      </if>
+      <if test="indexName != null" >
+        index_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="indexCode != null" >
+        #{indexCode,jdbcType=VARCHAR},
+      </if>
+      <if test="indexName != null" >
+        #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrz.entity.fund.IndexListPO" >
+    update index_list
+    <set >
+      <if test="indexName != null" >
+        index_name = #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where index_code = #{indexCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrz.entity.fund.IndexListPO" >
+    update index_list
+    set index_name = #{indexName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR}
+    where index_code = #{indexCode,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  
+  <select id="getAllList" resultMap="BaseResultMap">
+  	select * from index_list
+  </select>
+  
+</mapper>

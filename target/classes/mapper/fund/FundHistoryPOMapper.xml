@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrz.mapper.fund.FundHistoryPOMapper" >
+  <resultMap id="BaseResultMap" type="com.zrz.entity.fund.FundHistoryPO" >
+    <id column="fund_code" property="fundCode" jdbcType="VARCHAR" />
+    <id column="date0" property="date0" jdbcType="VARCHAR" />
+    <result column="now_close" property="nowClose" jdbcType="DOUBLE" />
+    <result column="close0" property="close0" jdbcType="DOUBLE" />
+    <result column="now_float" property="nowFloat" jdbcType="DOUBLE" />
+    <result column="float0" property="float0" jdbcType="DOUBLE" />
+    <result column="avg5" property="avg5" jdbcType="DOUBLE" />
+    <result column="avg10" property="avg10" jdbcType="DOUBLE" />
+    <result column="avg20" property="avg20" jdbcType="DOUBLE" />
+    <result column="avg60" property="avg60" jdbcType="DOUBLE" />
+    <result column="avg120" property="avg120" jdbcType="DOUBLE" />
+    <result column="avg250" property="avg250" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fund_code, date0, now_close, close0, now_float, float0, avg5, avg10, avg20, avg60, 
+    avg120, avg250, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.zrz.entity.fund.FundHistoryPOKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from fund_history
+    where fund_code = #{fundCode,jdbcType=VARCHAR}
+      and date0 = #{date0,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.zrz.entity.fund.FundHistoryPOKey" >
+    delete from fund_history
+    where fund_code = #{fundCode,jdbcType=VARCHAR}
+      and date0 = #{date0,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zrz.entity.fund.FundHistoryPO" >
+    insert into fund_history (fund_code, date0, now_close, 
+      close0, now_float, float0, 
+      avg5, avg10, avg20, avg60, 
+      avg120, avg250, create_time
+      )
+    values (#{fundCode,jdbcType=VARCHAR}, #{date0,jdbcType=VARCHAR}, #{nowClose,jdbcType=DOUBLE}, 
+      #{close0,jdbcType=DOUBLE}, #{nowFloat,jdbcType=DOUBLE}, #{float0,jdbcType=DOUBLE}, 
+      #{avg5,jdbcType=DOUBLE}, #{avg10,jdbcType=DOUBLE}, #{avg20,jdbcType=DOUBLE}, #{avg60,jdbcType=DOUBLE}, 
+      #{avg120,jdbcType=DOUBLE}, #{avg250,jdbcType=DOUBLE}, #{createTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrz.entity.fund.FundHistoryPO" >
+    insert into fund_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fundCode != null" >
+        fund_code,
+      </if>
+      <if test="date0 != null" >
+        date0,
+      </if>
+      <if test="nowClose != null" >
+        now_close,
+      </if>
+      <if test="close0 != null" >
+        close0,
+      </if>
+      <if test="nowFloat != null" >
+        now_float,
+      </if>
+      <if test="float0 != null" >
+        float0,
+      </if>
+      <if test="avg5 != null" >
+        avg5,
+      </if>
+      <if test="avg10 != null" >
+        avg10,
+      </if>
+      <if test="avg20 != null" >
+        avg20,
+      </if>
+      <if test="avg60 != null" >
+        avg60,
+      </if>
+      <if test="avg120 != null" >
+        avg120,
+      </if>
+      <if test="avg250 != null" >
+        avg250,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fundCode != null" >
+        #{fundCode,jdbcType=VARCHAR},
+      </if>
+      <if test="date0 != null" >
+        #{date0,jdbcType=VARCHAR},
+      </if>
+      <if test="nowClose != null" >
+        #{nowClose,jdbcType=DOUBLE},
+      </if>
+      <if test="close0 != null" >
+        #{close0,jdbcType=DOUBLE},
+      </if>
+      <if test="nowFloat != null" >
+        #{nowFloat,jdbcType=DOUBLE},
+      </if>
+      <if test="float0 != null" >
+        #{float0,jdbcType=DOUBLE},
+      </if>
+      <if test="avg5 != null" >
+        #{avg5,jdbcType=DOUBLE},
+      </if>
+      <if test="avg10 != null" >
+        #{avg10,jdbcType=DOUBLE},
+      </if>
+      <if test="avg20 != null" >
+        #{avg20,jdbcType=DOUBLE},
+      </if>
+      <if test="avg60 != null" >
+        #{avg60,jdbcType=DOUBLE},
+      </if>
+      <if test="avg120 != null" >
+        #{avg120,jdbcType=DOUBLE},
+      </if>
+      <if test="avg250 != null" >
+        #{avg250,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrz.entity.fund.FundHistoryPO" >
+    update fund_history
+    <set >
+      <if test="nowClose != null" >
+        now_close = #{nowClose,jdbcType=DOUBLE},
+      </if>
+      <if test="close0 != null" >
+        close0 = #{close0,jdbcType=DOUBLE},
+      </if>
+      <if test="nowFloat != null" >
+        now_float = #{nowFloat,jdbcType=DOUBLE},
+      </if>
+      <if test="float0 != null" >
+        float0 = #{float0,jdbcType=DOUBLE},
+      </if>
+      <if test="avg5 != null" >
+        avg5 = #{avg5,jdbcType=DOUBLE},
+      </if>
+      <if test="avg10 != null" >
+        avg10 = #{avg10,jdbcType=DOUBLE},
+      </if>
+      <if test="avg20 != null" >
+        avg20 = #{avg20,jdbcType=DOUBLE},
+      </if>
+      <if test="avg60 != null" >
+        avg60 = #{avg60,jdbcType=DOUBLE},
+      </if>
+      <if test="avg120 != null" >
+        avg120 = #{avg120,jdbcType=DOUBLE},
+      </if>
+      <if test="avg250 != null" >
+        avg250 = #{avg250,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fund_code = #{fundCode,jdbcType=VARCHAR}
+      and date0 = #{date0,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrz.entity.fund.FundHistoryPO" >
+    update fund_history
+    set now_close = #{nowClose,jdbcType=DOUBLE},
+      close0 = #{close0,jdbcType=DOUBLE},
+      now_float = #{nowFloat,jdbcType=DOUBLE},
+      float0 = #{float0,jdbcType=DOUBLE},
+      avg5 = #{avg5,jdbcType=DOUBLE},
+      avg10 = #{avg10,jdbcType=DOUBLE},
+      avg20 = #{avg20,jdbcType=DOUBLE},
+      avg60 = #{avg60,jdbcType=DOUBLE},
+      avg120 = #{avg120,jdbcType=DOUBLE},
+      avg250 = #{avg250,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=VARCHAR}
+    where fund_code = #{fundCode,jdbcType=VARCHAR}
+      and date0 = #{date0,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  <select id="getPOByCodeAndDate" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  	select * from fund_history 
+  	where fund_code = #{fund_code,jdbcType=VARCHAR} and date0 = #{date0,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getLastPO" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  	select * from  
+       (
+       	select * from fund_history 
+       	where fund_code = #{fund_code,jdbcType=VARCHAR}
+       	and date0 <![CDATA[<]]> #{date0,jdbcType=VARCHAR}
+       	order by date0 desc
+       	)
+	where rownum = 1
+  </select>
+  
+  <select id="getListByCodeAndDate" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  	select * from fund_history 
+  	where fund_code = #{fund_code,jdbcType=VARCHAR} 
+  		and date0 <![CDATA[>=]]> #{date0,jdbcType=VARCHAR}
+  		and date0 <![CDATA[<=]]> #{date1,jdbcType=VARCHAR}
+  	order by date0
+  </select>
+  
+  <select id="getAvgByDateAndDayNum" resultType="Double">
+  	select avg(close0) from (
+       select close0 from FUND_history 
+       where fund_code = #{fund_code} and date0<![CDATA[<=]]>#{date0} order by date0 desc limit #{dayNum}
+	) t
+  </select>
+  
+  <select id="getMaxByDateAndDayNum" resultType="Double">
+  	select max(close0) from (
+       select close0 from FUND_history 
+       where fund_code = #{fund_code} and date0<![CDATA[<=]]>#{date0} order by date0 desc
+	) limit #{dayNum}
+  </select>
+  
+</mapper>

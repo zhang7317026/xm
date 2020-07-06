@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+.opt-list{
+	padding: 1rem;
+    margin-top: 1rem;
+    background-color: #fff;
+}
+.opt-list-one{
+	padding: 15px;
+    background-color: #ebe9f9;
+}

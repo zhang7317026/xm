@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrz.mapper.SysUserInfoPOMapper" >
+  <resultMap id="BaseResultMap" type="com.zrz.entity.SysUserInfoPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="last_time" property="lastTime" jdbcType="VARCHAR" />
+    <result column="last_login" property="lastLogin" jdbcType="VARCHAR" />
+    <result column="opt_times" property="optTimes" jdbcType="INTEGER" />
+    <result column="gold" property="gold" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="marker" property="marker" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, account, password, create_time, last_time, last_login, opt_times, gold, 
+    level, img, marker
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_user_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zrz.entity.SysUserInfoPO" >
+    insert into sys_user_info (id, name, account, 
+      password, create_time, last_time, 
+      last_login, opt_times, gold, 
+      level, img, marker)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{lastTime,jdbcType=VARCHAR}, 
+      #{lastLogin,jdbcType=VARCHAR}, #{optTimes,jdbcType=INTEGER}, #{gold,jdbcType=INTEGER}, 
+      #{level,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR}, #{marker,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrz.entity.SysUserInfoPO" >
+    insert into sys_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="lastTime != null" >
+        last_time,
+      </if>
+      <if test="lastLogin != null" >
+        last_login,
+      </if>
+      <if test="optTimes != null" >
+        opt_times,
+      </if>
+      <if test="gold != null" >
+        gold,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="marker != null" >
+        marker,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLogin != null" >
+        #{lastLogin,jdbcType=VARCHAR},
+      </if>
+      <if test="optTimes != null" >
+        #{optTimes,jdbcType=INTEGER},
+      </if>
+      <if test="gold != null" >
+        #{gold,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="marker != null" >
+        #{marker,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrz.entity.SysUserInfoPO" >
+    update sys_user_info
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null" >
+        last_time = #{lastTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLogin != null" >
+        last_login = #{lastLogin,jdbcType=VARCHAR},
+      </if>
+      <if test="optTimes != null" >
+        opt_times = #{optTimes,jdbcType=INTEGER},
+      </if>
+      <if test="gold != null" >
+        gold = #{gold,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="marker != null" >
+        marker = #{marker,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrz.entity.SysUserInfoPO" >
+    update sys_user_info
+    set name = #{name,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=VARCHAR},
+      last_login = #{lastLogin,jdbcType=VARCHAR},
+      opt_times = #{optTimes,jdbcType=INTEGER},
+      gold = #{gold,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      img = #{img,jdbcType=VARCHAR},
+      marker = #{marker,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getByAccount" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select <include refid="Base_Column_List" /> from sys_user_info 
+  	where account = #{account,jdbcType=VARCHAR}
+  </select>
+  
+  <update id="updateGold">
+    update sys_user_info
+    <if test="flag == 'plus'">
+    set gold = (gold + #{num,jdbcType=INTEGER})
+    </if>
+    <if test="flag == 'minus'">
+    set gold = (gold - #{num,jdbcType=INTEGER})
+    </if>     
+    where ID = #{user_id,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateLevel">
+    update sys_user_info
+    set level0 = #{level,jdbcType=INTEGER}
+    where ID = #{user_id,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

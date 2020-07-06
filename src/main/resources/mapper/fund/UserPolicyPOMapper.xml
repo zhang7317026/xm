@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrz.mapper.fund.UserPolicyPOMapper" >
+  <resultMap id="BaseResultMap" type="com.zrz.entity.fund.UserPolicyPO" >
+    <id column="policy_id" property="policyId" jdbcType="VARCHAR" />
+    <result column="policy_name" property="policyName" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="input_all" property="inputAll" jdbcType="DOUBLE" />
+    <result column="now_all" property="nowAll" jdbcType="DOUBLE" />
+    <result column="surplus" property="surplus" jdbcType="DOUBLE" />
+    <result column="make_all" property="makeAll" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="VARCHAR" />
+    <result column="last_date" property="lastDate" jdbcType="VARCHAR" />
+    <result column="mark" property="mark" jdbcType="VARCHAR" />
+    <result column="surplus_interest" property="surplusInterest" jdbcType="DOUBLE" />
+    <result column="input_period" property="inputPeriod" jdbcType="VARCHAR" />
+    <result column="input_per" property="inputPer" jdbcType="DOUBLE" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    policy_id, policy_name, user_id, input_all, now_all, surplus, make_all, create_time, 
+    start_date, last_date, mark, surplus_interest, input_period, input_per, update_date, 
+    update_time, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_policy
+    where policy_id = #{policyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_policy
+    where policy_id = #{policyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zrz.entity.fund.UserPolicyPO" >
+    insert into user_policy (policy_id, policy_name, user_id, 
+      input_all, now_all, surplus, 
+      make_all, create_time, start_date, 
+      last_date, mark, surplus_interest, 
+      input_period, input_per, update_date, 
+      update_time, status)
+    values (#{policyId,jdbcType=VARCHAR}, #{policyName,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{inputAll,jdbcType=DOUBLE}, #{nowAll,jdbcType=DOUBLE}, #{surplus,jdbcType=DOUBLE}, 
+      #{makeAll,jdbcType=DOUBLE}, #{createTime,jdbcType=VARCHAR}, #{startDate,jdbcType=VARCHAR}, 
+      #{lastDate,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, #{surplusInterest,jdbcType=DOUBLE}, 
+      #{inputPeriod,jdbcType=VARCHAR}, #{inputPer,jdbcType=DOUBLE}, #{updateDate,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrz.entity.fund.UserPolicyPO" >
+    insert into user_policy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="policyId != null" >
+        policy_id,
+      </if>
+      <if test="policyName != null" >
+        policy_name,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="inputAll != null" >
+        input_all,
+      </if>
+      <if test="nowAll != null" >
+        now_all,
+      </if>
+      <if test="surplus != null" >
+        surplus,
+      </if>
+      <if test="makeAll != null" >
+        make_all,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="lastDate != null" >
+        last_date,
+      </if>
+      <if test="mark != null" >
+        mark,
+      </if>
+      <if test="surplusInterest != null" >
+        surplus_interest,
+      </if>
+      <if test="inputPeriod != null" >
+        input_period,
+      </if>
+      <if test="inputPer != null" >
+        input_per,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="policyId != null" >
+        #{policyId,jdbcType=VARCHAR},
+      </if>
+      <if test="policyName != null" >
+        #{policyName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="inputAll != null" >
+        #{inputAll,jdbcType=DOUBLE},
+      </if>
+      <if test="nowAll != null" >
+        #{nowAll,jdbcType=DOUBLE},
+      </if>
+      <if test="surplus != null" >
+        #{surplus,jdbcType=DOUBLE},
+      </if>
+      <if test="makeAll != null" >
+        #{makeAll,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastDate != null" >
+        #{lastDate,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null" >
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="surplusInterest != null" >
+        #{surplusInterest,jdbcType=DOUBLE},
+      </if>
+      <if test="inputPeriod != null" >
+        #{inputPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="inputPer != null" >
+        #{inputPer,jdbcType=DOUBLE},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrz.entity.fund.UserPolicyPO" >
+    update user_policy
+    <set >
+      <if test="policyName != null" >
+        policy_name = #{policyName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="inputAll != null" >
+        input_all = #{inputAll,jdbcType=DOUBLE},
+      </if>
+      <if test="nowAll != null" >
+        now_all = #{nowAll,jdbcType=DOUBLE},
+      </if>
+      <if test="surplus != null" >
+        surplus = #{surplus,jdbcType=DOUBLE},
+      </if>
+      <if test="makeAll != null" >
+        make_all = #{makeAll,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastDate != null" >
+        last_date = #{lastDate,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null" >
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="surplusInterest != null" >
+        surplus_interest = #{surplusInterest,jdbcType=DOUBLE},
+      </if>
+      <if test="inputPeriod != null" >
+        input_period = #{inputPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="inputPer != null" >
+        input_per = #{inputPer,jdbcType=DOUBLE},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where policy_id = #{policyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrz.entity.fund.UserPolicyPO" >
+    update user_policy
+    set policy_name = #{policyName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      input_all = #{inputAll,jdbcType=DOUBLE},
+      now_all = #{nowAll,jdbcType=DOUBLE},
+      surplus = #{surplus,jdbcType=DOUBLE},
+      make_all = #{makeAll,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=VARCHAR},
+      last_date = #{lastDate,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      surplus_interest = #{surplusInterest,jdbcType=DOUBLE},
+      input_period = #{inputPeriod,jdbcType=VARCHAR},
+      input_per = #{inputPer,jdbcType=DOUBLE},
+      update_date = #{updateDate,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where policy_id = #{policyId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getListLikePolicyName" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from user_policy 
+  	where user_id = #{user_id,jdbcType=VARCHAR} 
+  	and policy_name like concat('%',#{policy_name,jdbcType=VARCHAR},'%')) 
+  	order by start_date
+  </select>
+  
+  <select id="getListByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from user_policy 
+  	where user_id = #{user_id,jdbcType=VARCHAR} 
+  	order by start_date
+  </select>
+  
+</mapper>

@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrz.mapper.fund.IndexHistoryPOMapper" >
+  <resultMap id="BaseResultMap" type="com.zrz.entity.fund.IndexHistoryPO" >
+    <id column="index_code" property="indexCode" jdbcType="VARCHAR" />
+    <id column="date0" property="date0" jdbcType="VARCHAR" />
+    <result column="close0" property="close0" jdbcType="DOUBLE" />
+    <result column="PE_add" property="peAdd" jdbcType="DOUBLE" />
+    <result column="PE_add_rate" property="peAddRate" jdbcType="DOUBLE" />
+    <result column="PE_add_30" property="peAdd30" jdbcType="DOUBLE" />
+    <result column="PE_add_70" property="peAdd70" jdbcType="DOUBLE" />
+    <result column="PE_avg" property="peAvg" jdbcType="DOUBLE" />
+    <result column="PE_avg_rate" property="peAvgRate" jdbcType="DOUBLE" />
+    <result column="PE_avg_30" property="peAvg30" jdbcType="DOUBLE" />
+    <result column="PE_avg_70" property="peAvg70" jdbcType="DOUBLE" />
+    <result column="PB_add" property="pbAdd" jdbcType="DOUBLE" />
+    <result column="PB_add_rate" property="pbAddRate" jdbcType="DOUBLE" />
+    <result column="PB_add_30" property="pbAdd30" jdbcType="DOUBLE" />
+    <result column="PB_add_70" property="pbAdd70" jdbcType="DOUBLE" />
+    <result column="PB_avg" property="pbAvg" jdbcType="DOUBLE" />
+    <result column="PB_avg_rate" property="pbAvgRate" jdbcType="DOUBLE" />
+    <result column="PB_avg_30" property="pbAvg30" jdbcType="DOUBLE" />
+    <result column="PB_avg_70" property="pbAvg70" jdbcType="DOUBLE" />
+    <result column="ROE" property="roe" jdbcType="DOUBLE" />
+    <result column="ROE_avg_rate" property="roeAvgRate" jdbcType="DOUBLE" />
+    <result column="ROE_30" property="roe30" jdbcType="DOUBLE" />
+    <result column="ROE_70" property="roe70" jdbcType="DOUBLE" />
+    <result column="avg_5" property="avg5" jdbcType="DOUBLE" />
+    <result column="avg_10" property="avg10" jdbcType="DOUBLE" />
+    <result column="avg_20" property="avg20" jdbcType="DOUBLE" />
+    <result column="avg_60" property="avg60" jdbcType="DOUBLE" />
+    <result column="avg_120" property="avg120" jdbcType="DOUBLE" />
+    <result column="avg_250" property="avg250" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    index_code, date0, close0, PE_add, PE_add_rate, PE_add_30, PE_add_70, PE_avg, PE_avg_rate, 
+    PE_avg_30, PE_avg_70, PB_add, PB_add_rate, PB_add_30, PB_add_70, PB_avg, PB_avg_rate, 
+    PB_avg_30, PB_avg_70, ROE, ROE_avg_rate, ROE_30, ROE_70, avg_5, avg_10, avg_20, avg_60, 
+    avg_120, avg_250, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.zrz.entity.fund.IndexHistoryPOKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from index_history
+    where index_code = #{indexCode,jdbcType=VARCHAR}
+      and date0 = #{date0,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.zrz.entity.fund.IndexHistoryPOKey" >
+    delete from index_history
+    where index_code = #{indexCode,jdbcType=VARCHAR}
+      and date0 = #{date0,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zrz.entity.fund.IndexHistoryPO" >
+    insert into index_history (index_code, date0, close0, 
+      PE_add, PE_add_rate, PE_add_30, 
+      PE_add_70, PE_avg, PE_avg_rate, 
+      PE_avg_30, PE_avg_70, PB_add, 
+      PB_add_rate, PB_add_30, PB_add_70, 
+      PB_avg, PB_avg_rate, PB_avg_30, 
+      PB_avg_70, ROE, ROE_avg_rate, 
+      ROE_30, ROE_70, avg_5, avg_10, 
+      avg_20, avg_60, avg_120, 
+      avg_250, create_time)
+    values (#{indexCode,jdbcType=VARCHAR}, #{date0,jdbcType=VARCHAR}, #{close0,jdbcType=DOUBLE}, 
+      #{peAdd,jdbcType=DOUBLE}, #{peAddRate,jdbcType=DOUBLE}, #{peAdd30,jdbcType=DOUBLE}, 
+      #{peAdd70,jdbcType=DOUBLE}, #{peAvg,jdbcType=DOUBLE}, #{peAvgRate,jdbcType=DOUBLE}, 
+      #{peAvg30,jdbcType=DOUBLE}, #{peAvg70,jdbcType=DOUBLE}, #{pbAdd,jdbcType=DOUBLE}, 
+      #{pbAddRate,jdbcType=DOUBLE}, #{pbAdd30,jdbcType=DOUBLE}, #{pbAdd70,jdbcType=DOUBLE}, 
+      #{pbAvg,jdbcType=DOUBLE}, #{pbAvgRate,jdbcType=DOUBLE}, #{pbAvg30,jdbcType=DOUBLE}, 
+      #{pbAvg70,jdbcType=DOUBLE}, #{roe,jdbcType=DOUBLE}, #{roeAvgRate,jdbcType=DOUBLE}, 
+      #{roe30,jdbcType=DOUBLE}, #{roe70,jdbcType=DOUBLE}, #{avg5,jdbcType=DOUBLE}, #{avg10,jdbcType=DOUBLE}, 
+      #{avg20,jdbcType=DOUBLE}, #{avg60,jdbcType=DOUBLE}, #{avg120,jdbcType=DOUBLE}, 
+      #{avg250,jdbcType=DOUBLE}, #{createTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zrz.entity.fund.IndexHistoryPO" >
+    insert into index_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="indexCode != null" >
+        index_code,
+      </if>
+      <if test="date0 != null" >
+        date0,
+      </if>
+      <if test="close0 != null" >
+        close0,
+      </if>
+      <if test="peAdd != null" >
+        PE_add,
+      </if>
+      <if test="peAddRate != null" >
+        PE_add_rate,
+      </if>
+      <if test="peAdd30 != null" >
+        PE_add_30,
+      </if>
+      <if test="peAdd70 != null" >
+        PE_add_70,
+      </if>
+      <if test="peAvg != null" >
+        PE_avg,
+      </if>
+      <if test="peAvgRate != null" >
+        PE_avg_rate,
+      </if>
+      <if test="peAvg30 != null" >
+        PE_avg_30,
+      </if>
+      <if test="peAvg70 != null" >
+        PE_avg_70,
+      </if>
+      <if test="pbAdd != null" >
+        PB_add,
+      </if>
+      <if test="pbAddRate != null" >
+        PB_add_rate,
+      </if>
+      <if test="pbAdd30 != null" >
+        PB_add_30,
+      </if>
+      <if test="pbAdd70 != null" >
+        PB_add_70,
+      </if>
+      <if test="pbAvg != null" >
+        PB_avg,
+      </if>
+      <if test="pbAvgRate != null" >
+        PB_avg_rate,
+      </if>
+      <if test="pbAvg30 != null" >
+        PB_avg_30,
+      </if>
+      <if test="pbAvg70 != null" >
+        PB_avg_70,
+      </if>
+      <if test="roe != null" >
+        ROE,
+      </if>
+      <if test="roeAvgRate != null" >
+        ROE_avg_rate,
+      </if>
+      <if test="roe30 != null" >
+        ROE_30,
+      </if>
+      <if test="roe70 != null" >
+        ROE_70,
+      </if>
+      <if test="avg5 != null" >
+        avg_5,
+      </if>
+      <if test="avg10 != null" >
+        avg_10,
+      </if>
+      <if test="avg20 != null" >
+        avg_20,
+      </if>
+      <if test="avg60 != null" >
+        avg_60,
+      </if>
+      <if test="avg120 != null" >
+        avg_120,
+      </if>
+      <if test="avg250 != null" >
+        avg_250,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="indexCode != null" >
+        #{indexCode,jdbcType=VARCHAR},
+      </if>
+      <if test="date0 != null" >
+        #{date0,jdbcType=VARCHAR},
+      </if>
+      <if test="close0 != null" >
+        #{close0,jdbcType=DOUBLE},
+      </if>
+      <if test="peAdd != null" >
+        #{peAdd,jdbcType=DOUBLE},
+      </if>
+      <if test="peAddRate != null" >
+        #{peAddRate,jdbcType=DOUBLE},
+      </if>
+      <if test="peAdd30 != null" >
+        #{peAdd30,jdbcType=DOUBLE},
+      </if>
+      <if test="peAdd70 != null" >
+        #{peAdd70,jdbcType=DOUBLE},
+      </if>
+      <if test="peAvg != null" >
+        #{peAvg,jdbcType=DOUBLE},
+      </if>
+      <if test="peAvgRate != null" >
+        #{peAvgRate,jdbcType=DOUBLE},
+      </if>
+      <if test="peAvg30 != null" >
+        #{peAvg30,jdbcType=DOUBLE},
+      </if>
+      <if test="peAvg70 != null" >
+        #{peAvg70,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAdd != null" >
+        #{pbAdd,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAddRate != null" >
+        #{pbAddRate,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAdd30 != null" >
+        #{pbAdd30,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAdd70 != null" >
+        #{pbAdd70,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAvg != null" >
+        #{pbAvg,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAvgRate != null" >
+        #{pbAvgRate,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAvg30 != null" >
+        #{pbAvg30,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAvg70 != null" >
+        #{pbAvg70,jdbcType=DOUBLE},
+      </if>
+      <if test="roe != null" >
+        #{roe,jdbcType=DOUBLE},
+      </if>
+      <if test="roeAvgRate != null" >
+        #{roeAvgRate,jdbcType=DOUBLE},
+      </if>
+      <if test="roe30 != null" >
+        #{roe30,jdbcType=DOUBLE},
+      </if>
+      <if test="roe70 != null" >
+        #{roe70,jdbcType=DOUBLE},
+      </if>
+      <if test="avg5 != null" >
+        #{avg5,jdbcType=DOUBLE},
+      </if>
+      <if test="avg10 != null" >
+        #{avg10,jdbcType=DOUBLE},
+      </if>
+      <if test="avg20 != null" >
+        #{avg20,jdbcType=DOUBLE},
+      </if>
+      <if test="avg60 != null" >
+        #{avg60,jdbcType=DOUBLE},
+      </if>
+      <if test="avg120 != null" >
+        #{avg120,jdbcType=DOUBLE},
+      </if>
+      <if test="avg250 != null" >
+        #{avg250,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zrz.entity.fund.IndexHistoryPO" >
+    update index_history
+    <set >
+      <if test="close0 != null" >
+        close0 = #{close0,jdbcType=DOUBLE},
+      </if>
+      <if test="peAdd != null" >
+        PE_add = #{peAdd,jdbcType=DOUBLE},
+      </if>
+      <if test="peAddRate != null" >
+        PE_add_rate = #{peAddRate,jdbcType=DOUBLE},
+      </if>
+      <if test="peAdd30 != null" >
+        PE_add_30 = #{peAdd30,jdbcType=DOUBLE},
+      </if>
+      <if test="peAdd70 != null" >
+        PE_add_70 = #{peAdd70,jdbcType=DOUBLE},
+      </if>
+      <if test="peAvg != null" >
+        PE_avg = #{peAvg,jdbcType=DOUBLE},
+      </if>
+      <if test="peAvgRate != null" >
+        PE_avg_rate = #{peAvgRate,jdbcType=DOUBLE},
+      </if>
+      <if test="peAvg30 != null" >
+        PE_avg_30 = #{peAvg30,jdbcType=DOUBLE},
+      </if>
+      <if test="peAvg70 != null" >
+        PE_avg_70 = #{peAvg70,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAdd != null" >
+        PB_add = #{pbAdd,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAddRate != null" >
+        PB_add_rate = #{pbAddRate,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAdd30 != null" >
+        PB_add_30 = #{pbAdd30,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAdd70 != null" >
+        PB_add_70 = #{pbAdd70,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAvg != null" >
+        PB_avg = #{pbAvg,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAvgRate != null" >
+        PB_avg_rate = #{pbAvgRate,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAvg30 != null" >
+        PB_avg_30 = #{pbAvg30,jdbcType=DOUBLE},
+      </if>
+      <if test="pbAvg70 != null" >
+        PB_avg_70 = #{pbAvg70,jdbcType=DOUBLE},
+      </if>
+      <if test="roe != null" >
+        ROE = #{roe,jdbcType=DOUBLE},
+      </if>
+      <if test="roeAvgRate != null" >
+        ROE_avg_rate = #{roeAvgRate,jdbcType=DOUBLE},
+      </if>
+      <if test="roe30 != null" >
+        ROE_30 = #{roe30,jdbcType=DOUBLE},
+      </if>
+      <if test="roe70 != null" >
+        ROE_70 = #{roe70,jdbcType=DOUBLE},
+      </if>
+      <if test="avg5 != null" >
+        avg_5 = #{avg5,jdbcType=DOUBLE},
+      </if>
+      <if test="avg10 != null" >
+        avg_10 = #{avg10,jdbcType=DOUBLE},
+      </if>
+      <if test="avg20 != null" >
+        avg_20 = #{avg20,jdbcType=DOUBLE},
+      </if>
+      <if test="avg60 != null" >
+        avg_60 = #{avg60,jdbcType=DOUBLE},
+      </if>
+      <if test="avg120 != null" >
+        avg_120 = #{avg120,jdbcType=DOUBLE},
+      </if>
+      <if test="avg250 != null" >
+        avg_250 = #{avg250,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where index_code = #{indexCode,jdbcType=VARCHAR}
+      and date0 = #{date0,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zrz.entity.fund.IndexHistoryPO" >
+    update index_history
+    set close0 = #{close0,jdbcType=DOUBLE},
+      PE_add = #{peAdd,jdbcType=DOUBLE},
+      PE_add_rate = #{peAddRate,jdbcType=DOUBLE},
+      PE_add_30 = #{peAdd30,jdbcType=DOUBLE},
+      PE_add_70 = #{peAdd70,jdbcType=DOUBLE},
+      PE_avg = #{peAvg,jdbcType=DOUBLE},
+      PE_avg_rate = #{peAvgRate,jdbcType=DOUBLE},
+      PE_avg_30 = #{peAvg30,jdbcType=DOUBLE},
+      PE_avg_70 = #{peAvg70,jdbcType=DOUBLE},
+      PB_add = #{pbAdd,jdbcType=DOUBLE},
+      PB_add_rate = #{pbAddRate,jdbcType=DOUBLE},
+      PB_add_30 = #{pbAdd30,jdbcType=DOUBLE},
+      PB_add_70 = #{pbAdd70,jdbcType=DOUBLE},
+      PB_avg = #{pbAvg,jdbcType=DOUBLE},
+      PB_avg_rate = #{pbAvgRate,jdbcType=DOUBLE},
+      PB_avg_30 = #{pbAvg30,jdbcType=DOUBLE},
+      PB_avg_70 = #{pbAvg70,jdbcType=DOUBLE},
+      ROE = #{roe,jdbcType=DOUBLE},
+      ROE_avg_rate = #{roeAvgRate,jdbcType=DOUBLE},
+      ROE_30 = #{roe30,jdbcType=DOUBLE},
+      ROE_70 = #{roe70,jdbcType=DOUBLE},
+      avg_5 = #{avg5,jdbcType=DOUBLE},
+      avg_10 = #{avg10,jdbcType=DOUBLE},
+      avg_20 = #{avg20,jdbcType=DOUBLE},
+      avg_60 = #{avg60,jdbcType=DOUBLE},
+      avg_120 = #{avg120,jdbcType=DOUBLE},
+      avg_250 = #{avg250,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=VARCHAR}
+    where index_code = #{indexCode,jdbcType=VARCHAR}
+      and date0 = #{date0,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  
+  
+  <select id="getPOByCodeAndDate" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  	select * from index_history 
+  	where index_code = #{index_code,jdbcType=VARCHAR} and date0 = #{date0,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getLastPO" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  	select * from  
+       (
+       	select * from index_history 
+       	where index_code = #{index_code,jdbcType=VARCHAR}
+       	and date0 <![CDATA[<]]> #{date0,jdbcType=VARCHAR}
+       	order by date0 desc
+       	)
+	where rownum = 1
+  </select>
+  
+  <select id="getListByCodeAndDate" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  	select * from index_history 
+  	where index_code = #{index_code,jdbcType=VARCHAR} 
+  		and date0 <![CDATA[>=]]> #{date0,jdbcType=VARCHAR}
+  		and date0 <![CDATA[<=]]> #{date1,jdbcType=VARCHAR}
+  	order by date0
+  </select>
+  
+  <select id="getAvgByDateAndDayNum" resultType="Double">
+  	select avg(close0) from (
+       select close0 from index_history 
+       where index_code = #{index_code} and date0<![CDATA[<=]]>#{date0} order by date0 desc limit #{dayNum}
+	) t
+  </select>
+  
+  <select id="getMaxByDateAndDayNum" resultType="Double">
+  	select max(close0) from (
+       select close0 from index_history 
+       where index_code = #{index_code} and date0<![CDATA[<=]]>#{date0} order by date0 desc
+	) limit #{dayNum}
+  </select>
+  
+</mapper>
